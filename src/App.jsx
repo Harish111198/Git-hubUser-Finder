@@ -1,21 +1,36 @@
-import { useState } from 'react'
+import { useState, Component } from 'react'
 import { Container } from 'react-bootstrap'
-// import UserItem from './components/UserItem'
+import axios from 'axios'
 import Users from './components/Users'
 import NavBar from './layouts/header/NavBar'
 
-function App() {
+class App extends Component {
+  state = {
+    users: [],
+    loading: false
+
+  };
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+
+    const res = await axios.get('https://api.github.com/users')
+    this.setState({ users: res.data, loading: false });
+  }
 
 
-  return (
-    <div className="App">
-      <NavBar title="Github Finder" />
-      <Container>
-        <Users />
-      </Container>
+  render() {
+    return (
+      <div className="App">
+        <NavBar title="Github Finder" />
+        <Container>
+          <Users loading={this.state.loading} users={this.state.users} />
+        </Container>
 
-    </div>
-  )
+      </div>
+    )
+  }
 }
+
 
 export default App
