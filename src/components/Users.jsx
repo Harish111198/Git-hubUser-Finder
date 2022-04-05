@@ -24,10 +24,6 @@ const Users = ({ users, loading }) => {
 
   }
 
-
-
-
-
 }
 const userStyle = {
   display: 'grid',

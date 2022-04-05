@@ -4,10 +4,11 @@ import classNames from "classnames"
 import { GoMarkGithub } from "react-icons/go";
 
 
-const NavBar = ({ icon, title }) => {
+const NavBar = ({ title }) => {
   return (
     <nav className={classNames(styles.navbarc)}>
       <h5>
+
         < GoMarkGithub />
         {title}
       </h5>
