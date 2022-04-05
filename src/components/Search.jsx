@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
-import { Input } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
+import classNames from 'classnames'
+import styles from './styles.module.scss'
 class Search extends Component {
   state = {
     text: ""
   };
   static propTypes = {
-    searchUsers: PropTypes.func.isRequired
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +20,9 @@ class Search extends Component {
   onChange = (e) => {
     this.setState({ text: e.target.value })
   };
+
   render() {
+    const { showClear, clearUsers } = this.props;
     return (
       <div>
         <form onSubmit={this.onSubmit} className='form'>
@@ -28,8 +34,10 @@ class Search extends Component {
           <Input type="submit" value="Search" className='my-2 btn btn-dark btn-block'></Input>
 
         </form>
-
-
+        {showClear &&
+          <Button className={classNames('my-2 ', styles.clearbtn)}
+            onClick={clearUsers}>Clear</Button>
+        }
 
       </div>
     )
