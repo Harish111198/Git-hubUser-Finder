@@ -4,4 +4,18 @@
   padding-left: 15px;
   padding-bottom: 1px;
   padding-top: 3px;
+  display: flex;
+}
+.myHomec {
+  display: flex;
+
+  list-style: none;
+  li {
+    a {
+      text-decoration: none;
+      color: white;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+  }
 }
